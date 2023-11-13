@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Fan ma'lumotlarini ozgartirish</title>
+</head>
+<body>
+<h1>Fan Update</h1>
+    <form method="post">{% csrf_token %}
+        <label>Nomi : </label>
+        <input type="text" value="{{fan.nom}}" name="nom">
+        <br>
+        <br>
+        <label>Yonalish : </label>
+        <select name="yonalish" >
+            <option value="{{fan.yonalish.id}}">{{fan.yonalish.nom}}</option>
+            {% for yonalish in yonalishlar %}
+                {% if yonalish.id != fan.yonalish.id %}
+            <option value="{{yonalish.id}}">{{yonalish.nom}}</option>
+                {% endif %}
+            {% endfor %}
+        </select>
+        <br>
+        <br>
+        <label>Asosiy : </label>
+        <input type="checkbox" name="asosiy">
+        <br>
+        <br>
+        <label>Saqlash : </label>
+        <button>Saqlash</button>
+    </form>
+</body>
+</html>

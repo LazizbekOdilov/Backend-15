@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Usozlar</title>
+</head>
+<body>
+    <h1>Tizimdagi hamma ustozlar ro'yhati </h1>
+    <br>
+    <hr>
+    <form method="get">
+        <input type="text" placeholder="Ustoz ismini kiriting" name="qidirish_sozi">
+        <button>Qidirish</button>
+    </form>
+    <br>
+    {% for ustoz in ustozlar %}
+    <br>
+    <h1>{{ustoz.id}}.{{ustoz.ism}} ( {{ustoz.fan.nom}} )</h1>
+    <a href="/ustoz_update/{{ustoz.id}}/">
+        <button>Update</button>
+    </a>
+    {% endfor %}
+
+    <br>
+    <hr>
+    <br>
+    <h1>Yangi ustoz qoshish</h1>
+    <form method="post">{% csrf_token %}
+        <label>Ism :</label>
+        <input type="text" placeholder="Ismini yozing" name="ism">
+        <br>
+        <br>
+        <label>Jins :</label>
+        <select name="jins">
+            <option value="Erkak">Erkak</option>
+            <option value="Ayol">Ayol</option>
+        </select>
+        <br>
+        <br>
+        <label>Yosh :</label>
+        <input type="number" placeholder="Yoshini yozing" name="yosh">
+        <br>
+        <br>
+        <label>Daraja :</label>
+        <select name="daraja">
+            <option value="Bakalavr">Bakalavr</option>
+            <option value="Magistr">Magistr</option>
+            <option value="Professor">Professor</option>
+        </select>
+        <br>
+        <br>
+        <label>Fan :</label>
+        <select name="fan">
+            {% for fan in fanlar %}
+            <option value="{{fan.id}}">{{fan.nom}}</option>
+            {% endfor %}
+        </select>
+        <br>
+        <br>
+        <label>Qo'shish:</label>
+        <button>Qo'shish</button>
+    </form>
+</body>
+</html>

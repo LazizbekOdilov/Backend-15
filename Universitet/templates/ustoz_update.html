@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<br>
+    <hr>
+    <br>
+    <h1>Ustoz Update</h1>
+    <form method="post">{% csrf_token %}
+        <label>Ism :</label>
+        <input type="text" value="{{ustoz.ism}}" name="ism">
+        <br>
+        <br>
+        <label>Jins :</label>
+        <select name="jins">
+            <option value="{{ ustoz.jins    }}"> {{ustoz.jins}} </option>
+            {% for i in jins %}
+                {% if i != ustoz.jins %}
+                    <option value="{{i}}">{{i}}</option>
+                {% endif %}
+            {% endfor %}
+        </select>
+        <br>
+        <br>
+        <label>Yosh :</label>
+        <input type="number" value="{{ustoz.yosh}}" name="yosh">
+        <br>
+        <br>
+        <label>Daraja :</label>
+        <select name="daraja">
+            <option value="{{ ustoz.daraja}}"> {{ustoz.daraja}} </option>
+            {% for i in daraja %}
+                {% if i != ustoz.daraja %}
+                    <option value="{{i}}">{{i}}</option>
+                {% endif %}
+            {% endfor %}
+        </select>
+        <br>
+        <br>
+        <label>Fan :</label>
+        <select name="fan">
+            <option value="{{ustoz.fan.id}}">{{ustoz.fan.nom}}</option>
+            {% for fan in fanlar %}
+                {% if fan.id != ustoz.fan.id %}
+            <option value="{{fan.id}}">{{fan.nom}}</option>
+                {% endif %}
+            {% endfor %}
+        </select>
+        <br>
+        <br>
+        <label>Saqlash:</label>
+        <button>Saqlash</button>
+    </form>
+</body>
+</html>

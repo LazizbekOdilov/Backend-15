@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Yonalish ma'lumotlarini ozgartirish</title>
+</head>
+<body>
+    <h1>Yo'nalish Update </h1>
+    <form method="post">{% csrf_token %}
+        <label>Nomi : </label>
+        <input type="text" value="{{yonalish.nom}}" name="nom">
+        <br>
+        <br>
+        <label>Aktiv : </label>
+        <input type="checkbox" name="aktiv" value="{{yonalish.aktiv}}">
+        <br>
+        <br>
+        <label>Saqlash : </label>
+        <button>Saqlash</button>
+    </form>
+
+</body>
+</html>

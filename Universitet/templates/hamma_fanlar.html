@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Fanlar</title>
+</head>
+<body>
+
+    <h1>Tizimdagi hamma fanlar ro'yhati </h1>
+    <br>
+    <hr>
+    <form method="get">
+        <input type="text" placeholder="Fan nomini kiriting" name="qidirish_sozi">
+        <button>Qidirish</button>
+    </form>
+    <br>
+    {% for fan in fanlar %}
+    <br>
+    <h1>{{fan}}</h1>
+    <a href="/fan_update/{{fan.id}}/">
+        <button>Update</button>
+    </a>
+    <a href="/fan_ochir/{{fan.id}}/">
+        <button>Delete</button>
+    </a>
+    {% endfor %}
+    <br>
+    <hr>
+    <br>
+    <h1>Yangi fan qoshish</h1>
+    <form method="post">{% csrf_token %}
+        {{ forma.as_p }}
+
+
+<!--        <label>Nomi:</label>-->
+<!--        <input type="text" placeholder="Nomini yozing" name="nom">-->
+<!--        <br>-->
+<!--        <br>-->
+<!--        <label>Yonalish:</label>-->
+<!--        <select name="yonalish" >-->
+<!--            {% for yonalish in yonalishlar %}-->
+<!--            <option value="{{yonalish.id}}">{{yonalish.nom}}</option>-->
+<!--            {% endfor %}-->
+<!--        </select>-->
+<!--        <br>-->
+<!--        <br>-->
+<!--        <label>Asosiy</label>-->
+<!--        <input type="checkbox" name="asosiy">-->
+<!--        <br>-->
+<!--        <br>-->
+        <label>Qo'shish:</label>
+        <button>Qo'shish</button>
+    </form>
+
+</body>
+</html>

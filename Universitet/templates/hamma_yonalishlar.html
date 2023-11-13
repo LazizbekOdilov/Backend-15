@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Yonalishlar</title>
+</head>
+<body>
+<h1>Tizimdagi hamma yonalishlar ro'yhati </h1>
+    <br>
+    <hr>
+    {% for yonalish in yonalishlar %}
+    <br>
+    <h1>{{yonalish}}</h1>
+    <a href="/yonalish_update/{{yonalish.id}}/">
+        <button>Update</button>
+    </a>
+    <a href="/yonalish_ochir/{{yonalish.id}}/">
+        <button>Delete</button>
+    </a>
+    {% endfor %}
+
+    <br>
+    <hr>
+    <br>
+    <h1>Yangi Yo'nalish qoshish</h1>
+    <form method="post">{% csrf_token %}
+        {{ forma.as_p }}
+
+<!--        <label>Nomi:</label>-->
+<!--        <input type="text" placeholder="Nomini yozing" name="nom">-->
+<!--        <br>-->
+<!--        <br>-->
+<!--        <label>Aktiv</label>-->
+<!--        <input type="checkbox" name="aktiv">-->
+<!--        <br>-->
+<!--        <br>-->
+        <label>Qo'shish:</label>
+        <button>Qo'shish</button>
+    </form>
+
+</body>
+</html>
